@@ -1,12 +1,14 @@
 {
-    "manufacturer": "Samsung",
-    "supportedModels": [
-        "QE49Q7FAM"
-    ],
-    "supportedController": "Broadlink",
-    "commandsEncoding": "Base64",
+    "manufacturer": "Whatever",
+    "supportedModels": ["ALL"],
+    "supportedController": "Script",
+    "commandsEncoding": "Raw",
     "commands": {
-        "off": "JgBGAJGTFDYUNhQ2FBEUERMSFBEUERM3EzcUNhMSExIUERQRFBEUERQ2FDYUERMSFDYUNhQ2FDYUERQREzcUNhQRFBEUERQADQU=",
-        "on": "JgDSAJKSFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhQRFBEUERQRFBEUERQ2FDYUERQRFDYUNhQ2FDYUERQRFDYUNhQRFBEUERQABeKUkhQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUNhQ2FBEUERQ2FDYUNhQ2FBEUERQ2FDYUERQRFBEUAAXilJIUNhQ2FDYUERQRFBEUERQRFDYUNhQ2FBEUERQRFBEUERQRFDYUNhQRFBEUNhQ1FTUVNRURFBEUNRU1FRAVEBUQFQANBQ=="
+        "on": "amp_power_on",
+        "off": "amp_power_off",
+        "mute": "amp_mute",
+        "volumeUp": "amp_volume_up",
+        "volumeDown": "amp_volume_down",
+        "nextChannel": "amp_source"
     }
 }

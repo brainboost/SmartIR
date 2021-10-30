@@ -15,6 +15,7 @@ XIAOMI_CONTROLLER = 'Xiaomi'
 MQTT_CONTROLLER = 'MQTT'
 LOOKIN_CONTROLLER = 'LOOKin'
 ESPHOME_CONTROLLER = 'ESPHome'
+SCRIPT_CONTROLLER = 'Script'
 
 ENC_BASE64 = 'Base64'
 ENC_HEX = 'Hex'
@@ -26,7 +27,7 @@ XIAOMI_COMMANDS_ENCODING = [ENC_PRONTO, ENC_RAW]
 MQTT_COMMANDS_ENCODING = [ENC_RAW]
 LOOKIN_COMMANDS_ENCODING = [ENC_PRONTO, ENC_RAW]
 ESPHOME_COMMANDS_ENCODING = [ENC_RAW]
-
+SCRIPT_COMMANDS_ENCODING = [ENC_RAW]
 
 def get_controller(hass, controller, encoding, controller_data, delay):
     """Return a controller compatible with the specification provided."""
@@ -35,7 +36,8 @@ def get_controller(hass, controller, encoding, controller_data, delay):
         XIAOMI_CONTROLLER: XiaomiController,
         MQTT_CONTROLLER: MQTTController,
         LOOKIN_CONTROLLER: LookinController,
-        ESPHOME_CONTROLLER: ESPHomeController
+        ESPHOME_CONTROLLER: ESPHomeController,
+        SCRIPT_CONTROLLER: ScriptController
     }
     try:
         return controllers[controller](hass, controller, encoding, controller_data, delay)
@@ -184,3 +186,17 @@ class ESPHomeController(AbstractController):
 
         await self.hass.services.async_call(
             'esphome', self._controller_data, service_data)
+
+class ScriptController(AbstractController):
+    """Controls devices having scripted IR commands."""
+
+    def check_encoding(self, encoding):
+        """Check if the encoding is supported by the controller."""
+        if encoding not in SCRIPT_COMMANDS_ENCODING:
+            raise Exception("The encoding is not supported "
+                            "by the Script controller. Use Raw encoding instead.")
+    
+    async def send(self, command):
+        """Call a script."""
+
+        await self.hass.services.async_call('script', command)

@@ -1,0 +1,14 @@
+{
+    "manufacturer": "Whatever",
+    "supportedModels": ["ALL"],
+    "supportedController": "Script",
+    "commandsEncoding": "Raw",
+    "commands": {
+        "on": "amp_power_on",
+        "off": "amp_power_off",
+        "mute": "amp_mute",
+        "volumeUp": "amp_volume_up",
+        "volumeDown": "amp_volume_down",
+        "nextChannel": "amp_source"
+    }
+}
