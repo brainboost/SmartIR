@@ -12,7 +12,7 @@ from homeassistant.components.media_player.const import (
     SUPPORT_NEXT_TRACK, SUPPORT_VOLUME_STEP, SUPPORT_VOLUME_MUTE, 
     SUPPORT_PLAY_MEDIA, SUPPORT_SELECT_SOURCE, MEDIA_TYPE_CHANNEL)
 from homeassistant.const import (
-    CONF_NAME, STATE_OFF, STATE_ON, STATE_UNKNOWN)
+    CONF_NAME, STATE_OFF, STATE_ON, SERVICE_VOLUME_MUTE, SERVICE_VOLUME_SET, STATE_UNKNOWN)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.restore_state import RestoreEntity
 from . import COMPONENT_ABS_DIR, Helper
@@ -218,6 +218,11 @@ class SmartIRMediaPlayer(MediaPlayerEntity, RestoreEntity):
             'commands_encoding': self._commands_encoding,
         }
 
+    @property
+    def is_volume_muted(self) -> bool:
+        """Boolean if volume is currently muted."""
+        return self._state == SERVICE_VOLUME_MUTE
+
     async def async_turn_off(self):
         """Turn the media player off."""
         await self.send_command(self._commands['off'])
@@ -257,6 +262,10 @@ class SmartIRMediaPlayer(MediaPlayerEntity, RestoreEntity):
     
     async def async_mute_volume(self, mute):
         """Mute the volume."""
+        if mute: 
+            self._state = SERVICE_VOLUME_MUTE 
+        else: 
+            self._state = SERVICE_VOLUME_SET
         await self.send_command(self._commands['mute'])
         await self.async_update_ha_state()
 
