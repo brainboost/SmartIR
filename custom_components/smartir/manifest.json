@@ -4,12 +4,12 @@
   "documentation": "https://github.com/smartHomeHub/SmartIR",
   "dependencies": [],
   "codeowners": ["@smartHomeHub"],
-  "requirements": ["aiofiles>=0.6.0"],
+  "requirements": ["aiofiles==25.1.0"],
   "homeassistant": "2025.5.0",
-  "version": "1.18.1",
+  "version": "1.18.1-fork",
   "updater": {
-    "version": "1.18.1",
-    "releaseNotes": "-- Implements new async_track_state_change_event",
+    "version": "1.18.1-fork",
+    "releaseNotes": "-- Updated dependencies (aiofiles 25.1.0) and rebased on upstream 1.18.1 with custom changes",
     "files": [
       "__init__.py",
       "climate.py",
