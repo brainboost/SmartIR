@@ -5,11 +5,11 @@
   "dependencies": [],
   "codeowners": ["@smartHomeHub"],
   "requirements": ["aiofiles==25.1.0"],
-  "homeassistant": "2025.5.0",
-  "version": "1.18.1-fork",
+  "homeassistant": "2026.11.0",
+  "version": "1.18.2-fork",
   "updater": {
-    "version": "1.18.1-fork",
-    "releaseNotes": "-- Updated dependencies (aiofiles 25.1.0) and rebased on upstream 1.18.1 with custom changes",
+    "version": "1.18.2-fork",
+    "releaseNotes": "-- Synced upstream 1.18.2 (codebooks, HA 2026.11.0 floor); kept custom changes (script controller, is_volume_muted, aiofiles 25.1.0)",
     "files": [
       "__init__.py",
       "climate.py",
